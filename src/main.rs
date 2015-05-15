@@ -1,9 +1,14 @@
 // very minimal rust program
-#![feature(start)]
+#![crate_type="lib"]
+#![feature(start, no_std, core)]
+#![no_std]
+
+#[macro_use]
+extern crate core;
 
 #[start]
 fn start(_argc: isize, _argv: *const *const u8) -> isize {
-    println!("this is a test {:?} {:?}", _argv, _argc);
+    assert_eq!(_argc, 1);
     0
 }
 
